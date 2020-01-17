@@ -17,7 +17,7 @@ pipeline {
         stage('Compile') {
             steps {
                 echo "-=- compiling project -=-"
-                sh 'mvn compile'
+                sh 'mvn clean compile'
             }
             
         }
@@ -31,6 +31,16 @@ pipeline {
                 success {
                     junit 'target/surefire-reports/*.xml'
                 }
+            }
+        }
+        stage('Code coverage') {
+            steps {
+                jacoco( 
+                      execPattern: 'target/*.exec',
+                      classPattern: 'target/classes',
+                      sourcePattern: 'src/main/java',
+                      exclusionPattern: 'src/test*'
+                )
             }
         }
     }
