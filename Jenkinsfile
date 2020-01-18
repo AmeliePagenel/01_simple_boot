@@ -43,5 +43,16 @@ pipeline {
                 )
             }
         }
+		stage('Sanity check') {
+		    steps {
+		        echo "-=- Sanity Check Test project -=-"
+		        sh 'mvn --batch-mode checkstyle:checkstyle'
+		    }
+		    post {
+		        always {
+		            recordIssues enabledForFailure: true, tools: [checkStyle()]
+		        }
+		    }
+		}
     }
 }
