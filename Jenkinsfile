@@ -58,7 +58,7 @@ pipeline {
 		    steps {
 		        echo "-=- Running analyse with sonar -=-"
                 withSonarQubeEnv('MySonar') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'mvn sonar:sonar'
                 }
 		    }
 		}
