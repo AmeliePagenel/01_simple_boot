@@ -72,7 +72,7 @@ pipeline {
 		stage('Docker build') {
 		     steps {
 		     	echo "-=- Building Docker Image -=-"
-		        sh 'docker -H 192.168.33.40:2375 build -t doum167/simple-boot .'
+		        sh 'docker build -t doum167/simple-boot .'
 		     }
 		}
     }
