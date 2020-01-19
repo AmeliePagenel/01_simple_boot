@@ -62,5 +62,18 @@ pipeline {
                 }
 		    }
 		}
+		stage('Package') {
+		     steps {
+		     	echo "-=- Packaging application -=-"
+		        sh 'mvn package'
+		     }
+		}
+		
+		stage('Docker build') {
+		     steps {
+		     	echo "-=- Building Docker Image -=-"
+		        sh 'docker -H 192.168.33.40:2375 build -t doum167/simple-boot .'
+		     }
+		}
     }
 }
