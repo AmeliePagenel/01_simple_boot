@@ -54,5 +54,13 @@ pipeline {
 		        }
 		    }
 		}
+		stage('SonarQube Report') {
+		    steps {
+		        echo "-=- Running analyse with sonar -=-"
+                withSonarQubeEnv('MySonar') {
+                    sh 'mvn clean package sonar:sonar'
+                }
+		    }
+		}
     }
 }
