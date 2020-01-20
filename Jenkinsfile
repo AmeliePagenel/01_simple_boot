@@ -58,7 +58,7 @@ pipeline {
 		    steps {
 		        echo "-=- Running analyse with sonar -=-"
                 withSonarQubeEnv('MySonar') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'mvn sonar:sonar'
                 }
 		    }
 		}
@@ -73,6 +73,13 @@ pipeline {
 		     steps {
 		     	echo "-=- Building Docker Image -=-"
 		        sh 'docker build -t doum167/simple-boot .'
+		     }
+		}
+		
+		stage('Deploy the Application') {
+		     steps {
+		     	echo "-=- Deploying Docker Image -=-"
+		        sh 'docker run --name=simple-boot -p 8180:8080 doum167/simple-boot'
 		     }
 		}
     }
