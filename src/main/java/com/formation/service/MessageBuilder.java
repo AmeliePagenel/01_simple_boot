@@ -2,6 +2,9 @@ package com.formation.service;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * MessageBuilder.
+ */
 @Service
 public class MessageBuilder {
 
