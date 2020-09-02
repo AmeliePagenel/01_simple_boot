@@ -1,5 +1,8 @@
 package com.formation.service;
 
+/**
+ * Ct.
+ */
 public class Ct {
 	 
     public int d(int a, int b) {
