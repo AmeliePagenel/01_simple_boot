@@ -15,4 +15,10 @@ class ApplicationTests {
     public void testSum() {
          assertEquals(5, calculator.sum(2, 3));
     }
+    
+    @Test
+    public void testName() {
+        MessageBuilder obj = new MessageBuilder();
+        assertEquals("Hello Jean", obj.getMessage("Jean"));
+    }
 }
